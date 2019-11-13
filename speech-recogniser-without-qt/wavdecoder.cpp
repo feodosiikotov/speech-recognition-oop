@@ -24,13 +24,14 @@ void WavDecoder::_readFromFile(const string& fileName)
     //Открываем в бинарном формате
     fin.open(fileName, ios::binary);
     if (fin.fail()) {
+        cout<<"Ошибка чтения с файла"<<endl;
         return;
     }
     //Создаем заголовок
     _header = new _Header(fin);
     //Проверка заголовка
     if (!(_header->check())){
-        return;
+        cout<<"Ошибка в header.check()"<<endl;//return;
     }
     _readData(fin);
     _hasData = true;
@@ -55,30 +56,37 @@ WavDecoder::_Header::_Header(ifstream& fin)
 
 bool WavDecoder::_Header::check() const
 {
-    if (_compare_strings(chunkId, "RIFF", 4)){
+    if (!_compare_strings(chunkId, "RIFF", 4)){
+        cout<<"Ошибка в chunkId"<<endl;
         return false;
     }
-    if (_compare_strings(format, "WAVE", 4)){
+    if (!_compare_strings(format, "WAVE", 4)){
+        cout<<"Ошибка в format"<<endl;
         return false;
     }
     char tmp[4] = {'f', 'm', 't', 32};
-    if (_compare_strings(subChunk1Id, tmp, 4)){
+    if (!_compare_strings(subChunk1Id, tmp, 4)){
+        cout<<"Ошибка в subChunk1Id"<<endl;
         return false;
     }
     //Поддерживается только PCM
     if (audioFormat != 1)
     {
+        cout<<"Ошибка в audioFormat "<<audioFormat<<endl;
         return false;
     }
     //Пока что только одноканальное аудио
     if (numChannels != 1){
+        cout<<"Ошибка в numChannels "<< (int)numChannels << "<-" << endl;
         return false;
     }
-    if (strcmp(subChunk2Id, "data")){
+    if (!_compare_strings(subChunk2Id, "data", 4)){
+        cout<<"Ошибка в subChunk2Id "<<subChunk2Id<<"<-"<<endl;
         return false;
     }
     //Надо будет допилить и остальные
     if (bitsPerSample != 16){
+        cout<<"Ошибка в bitsPerSample"<<endl;
         return false;
     }
     return true;

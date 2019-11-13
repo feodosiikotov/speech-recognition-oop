@@ -4,7 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    wavdecoder.cpp
+    frame.cpp \
+    wavdecoder.cpp \
+    frameprocessor.cpp \
+    wordsplitter.cpp
 
 HEADERS += \
-    wavdecoder.h
+    frame.h \
+    wavdecoder.h \
+    frameprocessor.h \
+    wordsplitter.h
