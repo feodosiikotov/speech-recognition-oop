@@ -1,10 +1,10 @@
 #include <iostream>
 #include "wavdecoder.h"
+#include "mfccprocessor.h"
 using namespace std;
 
 int main()
 {
-    WavDecoder p(string("/home/feodosii/Загрузки/test1.wav"));
-    std::cout<<"HELLO"<<endl;
+    std::cout<<"HELLO";
     return 0;
 }

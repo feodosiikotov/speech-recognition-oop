@@ -7,10 +7,12 @@ SOURCES += main.cpp \
     frame.cpp \
     wavdecoder.cpp \
     frameprocessor.cpp \
-    wordsplitter.cpp
+    wordsplitter.cpp \
+    mfccprocessor.cpp
 
 HEADERS += \
     frame.h \
     wavdecoder.h \
     frameprocessor.h \
-    wordsplitter.h
+    wordsplitter.h \
+    mfccprocessor.h
