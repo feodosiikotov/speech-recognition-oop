@@ -34,7 +34,6 @@ private:
         char subChunk2Id[4];
         char subChunk2Size[4];
 
-int int int = ss;
     };
     void _readFromFile(const string&);
     void _readData(ifstream&);
