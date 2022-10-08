@@ -15,6 +15,7 @@ public:
 
     FrameProcessor(const int& frameWidth, const float& overlap, const vector<double> &data, int sampleRate);
     vector<Frame> getFrameArray();
+int a, b, c;
 private:
 
     vector<Frame> frameArray;
